@@ -1,5 +1,5 @@
 package com.example.examplemod;
-
+import com.example.examplemod.item.MagicWandItem;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -50,8 +50,13 @@ public class ExampleMod {
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
 
     // Creates a new food item with the id "examplemod:example_id", nutrition 1 and saturation 2
-    public static final DeferredItem<Item> MAGIC_WAND = ITEMS.registerSimpleItem("magic_wand", new Item.Properties().stacksTo(1)
-            );
+    public static final DeferredItem<MagicWandItem> MAGIC_WAND = 
+        ITEMS.registerItem(
+            "magic_wand", 
+            MagicWandItem::new,
+            new Item.Properties()
+            .stacksTo(1)
+      );
 
     // Creates a creative tab with the id "examplemod:example_tab" for the example item, that is placed after the combat tab
     //public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
